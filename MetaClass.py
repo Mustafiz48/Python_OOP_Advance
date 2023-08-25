@@ -76,7 +76,9 @@ print(f"\n\n")
 print("#"*50)
 print(f"\n\n")
 
-class MyClass(metaclass = MyMeta):
+class BaseClass():
+    pass
+class MyClass(BaseClass, metaclass = MyMeta):
     def __init__(self, val1, val2):
         self.val_1 = val1
         self.val_2 = val2
@@ -84,3 +86,11 @@ class MyClass(metaclass = MyMeta):
         return self.val_1
     
 myobj = MyClass(5, 10)
+
+# output
+    # Class name:  MyClass
+    # Parent classes:  (<class '__main__.BaseClass'>,)
+    # Attributes:  {'__module__': '__main__', '__qualname__': 'MyClass', '__init__': <function MyClass.__init__ at 0x000001B747FDFA30>, 'get_val_1': <function MyClass.get_val_1 at 0x000001B747FDFAC0>}
+
+
+# To see one of the usecase of Metaclass, look at the MetaClassExample file in this repo
