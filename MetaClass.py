@@ -33,7 +33,7 @@ print(type(MyTypeClass))
     # <class '__main__.MyTypeClass'>
     # <class 'type'>
 """
-Wait a minute, the outputs are the same!! Yes, with type(), we can create function. the syntex is: 
+Wait a minute, the outputs are the same!! Yes, with type(), we can create class. the syntex is: 
     type(name, bases, attrs)
 Where:
     name: name of the class
@@ -94,3 +94,4 @@ myobj = MyClass(5, 10)
 
 
 # To see one of the usecase of Metaclass, look at the MetaClassExample file in this repo
+# Ano ther usecase of metaclass is singleton pattern. See the Signleton code
