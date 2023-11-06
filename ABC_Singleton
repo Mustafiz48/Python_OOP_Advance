@@ -1,0 +1,55 @@
+'''
+In this example we will create a base class that will act as both abstract and singleton class. The target is that 
+we will declaer a singleton class that will have some abstract methods too. So when create an object, the 
+derived class will have only one object and also inside the derived class there must have the definition of
+the abstractmethods. 
+
+'''
+
+from abc import ABC, abstractmethod
+
+class ABC_Singleton(ABC):
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+        return cls._instance
+    
+    @abstractmethod
+    def process(self):
+        pass
+
+    @abstractmethod
+    def post_process(self):
+        pass
+
+class Test(ABC_Singleton):
+    def process(self):
+        pass
+
+    def post_process(self):
+        pass
+
+obj1 = Test()
+obj2 = Test()
+
+print(obj1 == obj2)
+
+print(obj1, obj2 )
+
+# first we will try by commenting the definition of post_process function inside Test class. 
+# Output 
+#     cls._instance = super().__new__(cls)
+# TypeError: Can't instantiate abstract class Test with abstract method post_process
+
+# So the abstract method target is working. We can't declare the class without the post_process method
+
+# Now let's remove the comment from prost_process and let's run again. 
+
+# Output:
+# True
+# <__main__.Test object at 0x00000172FC60BD90> <__main__.Test object at 0x00000172FC60BD90>
+
+# This output confirms the singleton functionality is also working properly. The two objects created are the same,
+# the occupy the same memory space
